@@ -40,10 +40,6 @@ jobs:
           mysql database: 'cloud_computing_project' # Optional, default value is "test". The specified database which will be create
           mysql root password: root # Required if "mysql user" is empty, default is empty. The root superuser password
       
-      - name : Check Sql status
-        run : |
-          mysql --version
-          sudo service mysql status
 
       - name : Build with Maven
         run : mvn clean install -B
