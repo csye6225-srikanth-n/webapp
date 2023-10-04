@@ -31,11 +31,12 @@ jobs:
       - name : Install MySql
         run : |
           sudo apt-get update
-          sudo apt-get install mysql-server -y
+          sudo apt-get install mariadb-server -y
 
       - name : Start MySql
-        run : sudo service mysql start
-
+        run : |
+         sudo service mysql mariadb
+      
 
       - name : Create Database
         run : mysql --user=root --password=root -e "CREATE DATABASE IF NOT EXISTS cloud_computing_project;"
@@ -45,10 +46,8 @@ jobs:
           mysql --version
           sudo service mysql status
 
-
       - name : Build with Maven
         run : mvn clean install -B
-
 
 
       - name: Upload test results
