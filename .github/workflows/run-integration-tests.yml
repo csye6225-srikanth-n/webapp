@@ -35,7 +35,7 @@ jobs:
 
       - name : Start MySql
         run : |
-         sudo service mysql mariadb
+         sudo systemctl start mariadb
       
 
       - name : Create Database
