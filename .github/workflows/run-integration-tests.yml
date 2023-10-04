@@ -36,7 +36,7 @@ jobs:
       - name : Start MySql
         run : |
          sudo systemctl start mariadb
-         mysql -user="root" --password=""  -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
+         mysql --user="root" --password=""  -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
       
 
       - name : Create Database
