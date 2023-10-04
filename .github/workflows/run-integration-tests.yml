@@ -30,6 +30,7 @@ jobs:
 
       - name : Install MySql
         run : |
+          sudo service mysql stop
           sudo apt-get update
           sudo apt-get install mariadb-server -y
 
