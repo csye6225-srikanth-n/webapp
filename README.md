@@ -15,3 +15,5 @@
     - Name of the csv file should be users.csv
     - Build the application and run integration test case using the command : mvn clean install -B
     - Once the build is successful , run the application usinf the command : mvn spring-boot:run
+
+test
