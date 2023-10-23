@@ -7,7 +7,6 @@ packer {
   }
 }
 
-
 variable "aws_region" {
   type    = string
   default = "us-east-1"
@@ -32,15 +31,6 @@ variable "source_path_jar" {
   default = ""
 }
 
-variable "user_name" {
-  type    = string
-  default = ""
-}
-
-variable "environment_file" {
-  type    = string
-  default = ""
-}
 
 source "amazon-ebs" "webapp-ami" {
   region          = "${var.aws_region}"
@@ -77,16 +67,10 @@ build {
     destination = "/tmp/users.csv"
   }
 
-  provisioner "file" {
-    source      = "${var.environment_file}"
-    destination = "/tmp/.env"
-  }
-
   provisioner "shell" {
     environment_vars = [
-      "DEBIAN_FRONTEND=noninteractive"
-      "CHECKPOINT_DISABLE=1",
-      "DB_USER=${var.user_name}"
+      "DEBIAN_FRONTEND=noninteractive",
+      "CHECKPOINT_DISABLE=1"
     ]
     script = "./packer/setup.sh"
   }
