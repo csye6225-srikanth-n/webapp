@@ -28,4 +28,3 @@ sudo mv /tmp/users.csv /opt/users.csv
 
 sudo mv /tmp/csye6225-0.0.1-SNAPSHOT.jar .
 
-sudo mv /tmp/.env .
