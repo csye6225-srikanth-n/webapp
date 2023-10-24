@@ -1,13 +1,15 @@
 [Unit]
 Description=Starts my web server on port 8080
-ConditionPathExists=/home/admin/
+ConditionPathExists=/opt/csye6225/
 After=cloud-final.service
 
 [Service]
 Type=simple
-User=admin
-WorkingDirectory=/home/admin/
-ExecStart=java -jar /home/admin/csye6225-0.0.1-SNAPSHOT.jar
+User=csye6225
+WorkingDirectory=/opt/csye6225/
+#EnvironmentFile=/etc/environment
+ExecStart=/bin/bash -c "source /etc/environment && /usr/bin/java -jar /opt/csye6225/csye6225-0.0.1-SNAPSHOT.jar"
+#ExecStart=java -jar /opt/csye6225/csye6225-0.0.1-SNAPSHOT.jar
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=csye6225
