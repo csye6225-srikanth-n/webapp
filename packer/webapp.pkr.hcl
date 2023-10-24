@@ -56,12 +56,12 @@ source "amazon-ebs" "webapp-ami" {
     OS_Version    = "Debian"
     Release       = "Latest"
     Base_AMI_Name = "{{ .SourceAMIName }}"
-  }
+   }
 }
 
 
 build {
-  sources = ["source.amazon-ebs.webapp-ami"]
+  sources =  ["source.amazon-ebs.webapp-ami"]
   provisioner "file" {
     #./target/csye6225-0.0.1-SNAPSHOT.jar
     source      = "${var.source_path_jar}"
