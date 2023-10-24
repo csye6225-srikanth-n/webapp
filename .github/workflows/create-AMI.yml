@@ -34,8 +34,8 @@ jobs:
       - name: Set up MariaDB
         uses: getong/mariadb-action@v1.1
         with:
-          host port: ${{secrets.DB_PORT}} # Optional, default value is 3306. The port of host
-          mysql database: ${{ secrets.DB_NAME}} # Optional, default value is "test". The specified database which will be create
+          host port: ${{secrets.DB_PORT}}
+          mysql database: ${{ secrets.DB_NAME}}
           mysql root password: ${{ secrets.DB_PASS }}
 
       - name: Build with Maven
@@ -48,15 +48,6 @@ jobs:
           FILE_PATH: ${{ secrets.FILE_PATH }}
         run: mvn clean install
 
-#      - name: Create an .env file
-#        run: |
-#          touch .env
-#          echo DB_ADDRESS=${{ secrets.DB_ADDRESS }} >> .env
-#          echo DB_USER=${{ secrets.DB_USER_WEBAPP}} >> .env
-#          echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-#          echo DB_PASS=${{ secrets.DB_USER_WEBAPP }} >> .env
-#          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-#          echo FILE_PATH=${{ secrets.FILE_PATH_AMI }} >> .env
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
