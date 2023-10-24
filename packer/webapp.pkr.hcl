@@ -66,6 +66,10 @@ build {
     source      = "./opt/users.csv"
     destination = "/tmp/users.csv"
   }
+  provisioner "file" {
+    source      = "./packer/web-application.service"
+    destination = "/tmp/web-application.service"
+  }
 
   provisioner "shell" {
     environment_vars = [
