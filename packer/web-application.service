@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts my web server on port 8080
+ConditionPathExists=/home/root/
+After=cloud-final.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/root/
+ExecStart=java -jar csye6225-0.0.1-SNAPSHOT.jar
+Restart=always
+RestartSec=10
+
+
+[Install]
+WantedBy=cloud-init.service

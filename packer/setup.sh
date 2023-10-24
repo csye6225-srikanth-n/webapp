@@ -28,3 +28,6 @@ sudo mv /tmp/users.csv /opt/users.csv
 
 sudo mv /tmp/csye6225-0.0.1-SNAPSHOT.jar .
 
+sudo mv /tmp/web-application.service /etc/systemd/system/web-application.service
+
+sudo systemctl enable web-application.service
