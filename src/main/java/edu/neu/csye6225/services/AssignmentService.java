@@ -75,8 +75,8 @@ public class AssignmentService {
         Response<String> assignmentResponse = new Response<>();
         if(assignment.isEmpty()){
             assignmentResponse.setStatus(Response.ReturnStatus.FAILURE);
-            assignmentResponse.getErrorMessages().add("Assignment with ID not available");
-            response = ResponseEntity.status(400).body(assignmentResponse);
+            assignmentResponse.getErrorMessages().add("Assignment with ID not found");
+            response = ResponseEntity.status(404).body(assignmentResponse);
         }else{
             UUID accountId =assignment.get().getAccount().getId();
             UUID loggedId = (UUID) request.getSession().getAttribute("accountId");
