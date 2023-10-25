@@ -65,12 +65,11 @@ public class AssignmentController {
 
     @PostMapping
     @AuthenticateRequest
-    public ResponseEntity<Object> createAssignment(@RequestBody(required = false) Object body){
-        if(StringUtils.hasLength(request.getQueryString()) || body == null) {
+    public ResponseEntity<Object> createAssignment(@RequestBody(required = false) Assignment assignment){
+        if(StringUtils.hasLength(request.getQueryString()) || assignment == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        Assignment assignment = (Assignment) body;
         Map<String, String> hashMap = new HashMap<>();
         Set<ConstraintViolation<Assignment>> violations = validator.validate(assignment);
         if (!violations.isEmpty()){
