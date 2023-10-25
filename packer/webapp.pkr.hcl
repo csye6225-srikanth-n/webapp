@@ -72,7 +72,7 @@ build {
     destination = "/tmp/users.csv"
   }
   provisioner "file" {
-    source      = "./packer/web-application.service"
+    source      =   "./packer/web-application.service"
     destination = "/tmp/web-application.service"
   }
 
