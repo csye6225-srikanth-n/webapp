@@ -56,7 +56,7 @@ source "amazon-ebs" "webapp-ami" {
     OS_Version    = "Debian"
     Release       = "Latest"
     Base_AMI_Name = "{{ .SourceAMIName }}"
-   }
+  }
 }
 
 
