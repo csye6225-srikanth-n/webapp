@@ -31,13 +31,18 @@ variable "source_path_jar" {
   default = ""
 }
 
+variable "ami_users" {
+  type    = list(string)
+  default = ["362731286542","921922858617"]
+}
+
 
 source "amazon-ebs" "webapp-ami" {
   region          = "${var.aws_region}"
   ami_name        = "csye6225_${formatdate("YYYY_MM_DD_hh_mm_ss", timestamp())}"
   ami_description = "AMI for CSYE 6225"
   profile         = "dev"
-  ami_users       = ["362731286542"]
+  ami_users       = "${var.ami_users}"
   instance_type   = "t2.micro"
   source_ami      = "${var.source_ami}"
   ssh_username    = "${var.ssh_username}"
@@ -56,7 +61,7 @@ source "amazon-ebs" "webapp-ami" {
 
 
 build {
-  sources =  ["source.amazon-ebs.webapp-ami"]
+  sources = ["source.amazon-ebs.webapp-ami"]
   provisioner "file" {
     #./target/csye6225-0.0.1-SNAPSHOT.jar
     source      = "${var.source_path_jar}"

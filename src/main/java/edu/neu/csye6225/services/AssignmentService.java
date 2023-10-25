@@ -55,6 +55,12 @@ public class AssignmentService {
                     "to update an assignment use PUT request");
             return assignmentResponse;
         }
+        if(!assignment.getName().matches(".*[a-zA-Z].*")){
+            assignmentResponse.setStatus(Response.ReturnStatus.FAILURE);
+            assignmentResponse.setData(assignment);
+            assignmentResponse.getErrorMessages().add("Assignment name must contain atleast one alphabet");
+            return assignmentResponse;
+        }
         assignment.setAssignmentCreated(LocalDateTime.now());
         assignment.setAssignmentUpdated(LocalDateTime.now());
         UUID id = (UUID) request.getSession().getAttribute("accountId");
