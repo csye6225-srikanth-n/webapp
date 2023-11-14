@@ -69,10 +69,9 @@ jobs:
         run: packer build 
               -var "source_path_jar=target/csye6225-0.0.1-SNAPSHOT.jar"  
               -var "source_ami=${{vars.debian_id}}" 
-              -var "aws_region=${{secrets.aws_region}}" 
+              -var "aws_region=${{vars.aws_region}}" 
               -var "subnet_id=${{vars.subnet_id}}"
-              -var "ssh_username=${{secrets.ssh_username}}"
-              -var "ami_users=${{secrets.ami_users}}"
+              -var "ssh_username=${{vars.ssh_username}}"
               packer/.
 
 
